@@ -1,0 +1,23 @@
+! - To generate boilerplate HTML code
+
+-> Emmet abbreviations can be chained
+
+tag.class-name - To generate tag with class 
+
+tag#id - To generate tag with id
+
+tag[attribute="value"] - To generate tag with attribute and value
+
+tag*n - To generate tag n times
+
+tag{content} - To generate tag with content
+
+tag{$ content} - To generate numbered content
+
+tag>child-tag - To generate tag with child tag 
+
+tag+sibling-tag - To generate tag with sibling
+
+^ - climb up operator
+
+() - used grouping tags 

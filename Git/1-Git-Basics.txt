@@ -1,0 +1,44 @@
+Commands related to a remote repository-
+
+    git clone git@github.com:USER-NAME/REPOSITORY-NAME.git
+    git push or git push origin main (Both accomplish the same goal in this context)
+
+Commands related to the workflow-
+
+    git add . (Adds all untracked files in repository)
+    git commit -m "A message describing what you have done to make this snapshot different"
+
+Commands related to checking status or log history-
+
+    git status
+    git log
+
+Branch related commands-
+
+    git branch (Show all branches and marks current branch)
+    git branch <branch_name> (Creates a new branch)
+    git checkout <branch_name> (Changes branch)
+    git checkout -b <branch_name> (Creates and changes branch)
+
+Merge related commands-
+
+    git merge <branch_name> (merges given branch with current branch)
+
+Commands for deleting branch locally-
+
+    git branch -d <branch_name> (will not work for unmerged changes)
+    git branch -D <branch_name> (forced deletion irrespective of changes)
+
+Commands for deleting branch remotely-
+
+    git push --delete <remote name> <branch name> (in general, remote will be origin)
+
+List of standard commit messages-
+
+feat - new feature
+fix - bug fix
+docs - changes in documentation
+style - everything related to styling
+refactor - code changes that neither fixes a bug or adds a feature
+test - everything related to testing
+chore - updating build tasks, package manager configs, etc

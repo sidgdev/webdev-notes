@@ -1,0 +1,112 @@
+-> Document Object Model (DOM) is a tree-like representation of the contents of a webpage 
+-> DOM consists of nodes arranged in heirarchy as parent and child nodes representing each element in webpage
+
+Selecting nodes in DOM-
+
+-> Nodes can be selected using combination of CSS-style selectors and relationship properties
+
+    <div id="container">                (Parent node)
+        <div class="display"></div>     (Sibling node)
+        <div class="controls"></div>    (Sibling node)
+    </div>
+
+CSS selectors- 
+
+div.display
+.display
+#container > .display
+div#container > div.display
+
+    console.dir(container.firstElementChild);       //Selects display 
+    console.dir(container.lastElementChild);        //Selects controls
+    console.dir(controls.previousElementSibling);   //Selects display 
+
+DOM methods-
+
+Query selector-
+
+element.querySelector(selector) - returns a reference to the first match of selector
+element.querySelectorAll(selectors) - returns a nodelist containing references to all of the matches of the selectors
+
+Create element-
+
+document.createElement(tagName, [options]) - creates a new element of tag type tagName
+
+    const div = document.createElement('div');
+
+-> This method only creates element in memory not DOM
+
+Append elements-
+
+parentNode.appendChild(childNode) - appends childNode as the last child of parentNode
+parentNode.insertBefore(newNode, referenceNode) - inserts newNode into parentNode before referenceNode
+
+Remove elements-
+
+parentNode.removeChild(child) - removes child from parentNode on the DOM and returns a reference to child
+
+Altering elements-
+
+Adding inline style-
+
+    const div = document.createElement('div');
+    div.style.color = 'blue';                                       // adds the indicated style rule
+    div.style.cssText = 'color: blue; background: white;';          // adds several style rules
+    div.setAttribute('style', 'color: blue; background: white;');   // adds several style rules
+
+-> Kebab-cased CSS rules use camel case or bracket notation
+
+    div.style.backgroundColor 
+    div.style['background-color']
+
+Editing attributes-
+
+    div.setAttribute('id', 'theDiv');   // if attribute exists updates to given value else creates attribute                              
+    div.getAttribute('id');             // returns value of given attribute                                       
+    div.removeAttribute('id');          // removes given attribute
+
+Working with classes-
+
+    div.classList.add('new');           // adds class 'new' to div
+    div.classList.remove('new');        // removes 'new' class from div
+    div.classList.toggle('active');     // if class 'active' not exist then add it else if it does then remove it
+
+Adding text content-
+
+    div.textContent = 'Hello World'    // creates text node 'Hello World' and inserts it in div
+
+Adding HTML content-
+
+    div.innerHTML = '<span>Hello World</span>';// renders the HTML inside div
+
+-> textContent is preferable for adding text and innerHTML should be used sparingly as it can create security risks if misused
+
+Ways of handling events in JS-
+
+1 -> attach functions’ attributes directly on HTML elements
+
+    <button onclick="alert('Hello World')">Click Me</button>
+
+2 -> set the “on_event” property on the DOM object
+
+    <!-- the HTML file -->
+    <button id="btn">Click Me</button>
+
+    // the JavaScript file
+    const btn = document.querySelector('#btn');
+    btn.onclick = () => alert("Hello World");
+
+3 -> attach event listeners to the nodes 
+
+    const btn = document.querySelector('#btn');
+    btn.addEventListener ('click', () => {
+        alert("Hello World");
+    });
+
+    btn.addEventListener('click', function (e) {
+        console.log(e);
+        console.log(e.target);
+        e.target.style.background = 'blue';
+    });
+
+-> e is reference to event and e.target has reference element

@@ -1,0 +1,42 @@
+Flex container properties- (def=default value)
+
+display: flex; - makes any element a flex container
+
+flex-direction: row(def)/column/row-reverse/column-reverse; - sets direction of flex items in container
+
+flex-wrap: wrap/nowrap; - to wrap or overflow flex items in a container
+
+flex-flow: flex-direction flex-wrap;
+
+justify-content: flex-start(def)/center/...; - aligns flex items on main axis (horizontal axis by default)
+
+align-items: stretch(def)/flex-start/flex-end/center; - aligns flex items on cross axis (vertical axis by default)
+
+align-content: stretch/flex-start/flex-end/center - control distribution of space between multiple rows (wrapping)
+
+column-gap: px/%; - sets specified space between flex items on main axis
+
+row-gap: px/%; - sets specified space between flex rows (wrapping)
+
+gap: row-gap column-gap; - sets row and column gap
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Flex item properties-
+
+flex: flex-grow flex-shrink flex-basis; 
+
+flex-grow (def=0, 0~9) - item growth factor wrt other items 
+flex-shrink (def=1, 0~9) - item shrink factor wrt other items
+flex-basis (def=auto, 0, content) - sets initial size of flex item
+                                  - auto takes inherent item size
+                                  - 0 causes to take all free space          
+
+flex: initial; -> 0 1 auto
+flex: auto; -> 1 1 auto
+flex: none -> 0 0 auto
+flex: 1; -> 1 1 0
+
+align-self: stretch(def)/flex-start/flex-end/center/auto; - aligns individual item on cross axis (Overrides align-items)
+
+-> Use auto margin-left/margin-right to justify individual items on main axis

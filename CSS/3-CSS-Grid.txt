@@ -1,0 +1,69 @@
+Grid container properties- (def=default value)
+
+display: grid/inline-grid; - makes any element a grid container (inline-grid makes grid items inline)
+
+grid-template-columns: px/fr/%; - sets number of columns in grid
+
+grid-template-rows: px/fr/%; - sets number of rows in grid
+
+grid-template: rows / columns; - sets number of rows and columns in grid
+
+grid-auto-rows: px/fr/%; - sets number of rows for implicit grid items
+
+grid-auto-columns: px/fr/%; - sets number of columns for implicit grid items
+
+grid-auto-flow: row(def)/column; - sets direction where implicit grid items are added
+
+row-gap: px/%; - sets specified space between grid rows
+
+column-gap: px/%; - sets specified space between grid columns
+
+gap: row-gap column-gap; - sets specified space between grid items
+
+align-items: start/end/center; - sets alignment of grid items on block (column) axis in respective grid areas
+
+justify-items: start/end/center; - sets alignment of grid items on inline (row) axis in respective grid areas
+
+place-items: align-items justify-items; - sets alignment of all grid items on block & inline axis 
+
+align-content: start/end/space-between/space-around/space-evenly; - sets alignment of grid items on block axis in grid container
+
+justify-content: start/end/space-between/space-around/space-evenly; - sets alignment of grid items on inline axis in grid container
+
+resize: - allows user to resize grid container
+
+overflow: - enables scrolling if grid container is larger
+
+-> repeat() can used to specify repeated track lengths in concise way
+-> minmax() can define size range >= to min and <= to max 
+-> auto-fit and auto-fill can be used to dynamically create rows/colums based on grid container size
+    repeat(auto-fit, minmax(150px, 1fr));
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Grid item properties-
+
+grid-column-start: - sets column line where grid item starts
+
+grid-column-end: - sets column line where grid item ends
+
+grid-row-start: - sets row line where grid item starts
+
+grid-row-end: - sets row line where grid item ends
+
+grid-column: grid-column-start / grid-column-end; 
+
+grid-row: grid-row-start / grid-row-end;
+
+z-index: - sets position of display order of overlapping items (higher value -> higher order)
+
+grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end; 
+
+-> span (n) can specify number of tracks to span to after a grid line
+    grid-row: 1 / span 3;
+
+align-self: start/end/center; - sets alignment of individual grid item on block (column) axis
+
+justify-self: start/end/center; - sets alignment of individual grid item on inline (row) axis
+
+place-self: align-self justify-self; - sets alignment of individual grid item on block & inline axis

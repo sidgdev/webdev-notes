@@ -1,0 +1,110 @@
+Form element-
+
+    <form action="example.com/path" method="get">
+        ...
+    </form>
+
+Form controls-
+
+-> Form input controls are used associated with label element for user convenience & accessibility
+
+    <form action="example.com/path" method="post">
+        <label for="first_name"> First Name: </label>
+        <input type="text" id="first_name" name="first_name" placeholder="Enter name">
+    </form>
+
+-> for attribute of label associates it with particular form control
+-> placeholder attribute shows pre filled data in form control
+-> name attribute serves as a reference to the data inputted into a form control after submitting it
+
+input tag-
+
+-> Types of input tag for different data-
+text
+email
+password
+number
+date
+
+textarea tag-
+
+    <textarea rows="20" cols="60"> Some initial content </textarea>
+
+select tag- (select dropdown)
+
+    <select name="car">
+        <option value="mercedes"> Mercedes </option>
+        <option value="tesla"> Tesla </option>
+        <option value="volvo"> Volvo </option>
+        <option value="bmw" selected> BMW </option>
+    </select>
+
+-> selected attribute makes of option default selected when form is rendered
+-> optgroup element is used for grouping options under labels
+
+    <select name="fashion">
+        <optgroup label="Clothing">
+            <option value="t_shirt"> T-Shirts </option>
+            <option value="sweater"> Sweaters </option>
+        </optgroup>
+        <optgroup label="Foot Wear">
+            <option value="sneakers"> Sneakers </option>
+            <option value="sandals"> Sandals </option>
+        </optgroup>
+    </select>
+
+input tag for radio buttons-
+
+    <h3>Ticket Type</h3>
+    <div>
+        <input type="radio" id="child" name="ticket_type" value="child">
+        <label for="child"> Child </label>
+    </div>
+    <div>
+        <input type="radio" id="adult" name="ticket_type" value="adult" checked>
+        <label for="adult"> Adult </label>
+    </div>
+    <div>
+        <input type="radio" id="senior" name="ticket_type" value="senior">
+        <label for="senior"> Senior </label>
+    </div>
+
+-> checked attribute selects the default radio button
+
+input tag for checkboxes-
+
+    <div>
+        <input type="checkbox" id="newsletter" name="news_letter" checked>
+        <label for="newsletter"> Send me the news letter </label>
+    </div>
+
+-> checked attribute to select multiple checkboxes
+
+button tag-
+
+    <button type="submit"> Submit </button>    // Submits the form
+
+    <button type="reset"> Reset </button>    // Clears all data and sets form to initial stage
+
+    <button type="button"> Click to Toggle </button>    // Generic button for UI
+
+fieldset & legend tag-
+
+-> fieldset element is a container element that allows us to group related form inputs
+-> legend element is used for giving fieldset a heading or caption
+-> useful in grouping radio buttons
+
+    <fieldset>
+        <legend> Contact Details </legend>
+
+        <label for="name"> Name: </label>
+        <input type="text" id="name" name="name">
+
+        <label for="phone_number"> Phone Number: </label>
+        <input type="tel" id="phone_number" name="phone_number">
+
+        <label for="email"> Email: </label>
+        <input type="email" id="email" name="email">
+    </fieldset>
+
+-> Styling varies for form controls from browser to browser, use custom css style or frameworks for consistent design 

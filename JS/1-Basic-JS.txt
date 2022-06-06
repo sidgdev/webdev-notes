@@ -1,0 +1,266 @@
+Injecting JS in HTML-
+
+    <head>
+        <script src="program.js" defer></script>
+    </head>
+
+-> defer keyword makes browser load JS after HTML file is rendered
+
+Comments in JS-
+
+    // This is an in-line comment.
+    /* This is a
+    multi-line comment */
+
+Declaring a variable-
+
+    var varOne;
+    let varTwo; (ES6) 
+    const varThree; (ES6)
+
+-> let is preferred way of declaring variables and constants with const under ES6 standard
+-> Variable names can be made up of numbers, letters, and $ or _, but may not contain spaces or start with a number
+
+A value can be assigned with the assignment operator (=)-
+
+    myVariable = 5;
+
+JS datatypes-
+
+Number (int, float, Infinity, -Infinity, NaN)
+BigInt 
+String
+Boolean (true/false)
+null
+undefined
+Object
+symbol
+
+-> When variables are declared, they have an initial value of undefined 
+-> If you do a mathematical operation on an undefined variable, your result will be NaN which means "Not a Number" 
+-> If you concatenate a string with an undefined variable, you will get a literal string of "undefined"
+
+Strings in JS-
+
+-> String in JS are enclosed in single quote ('), double quote (") or backtick (`) - (template literals) 
+-> String values are immutable and can only be reassigned
+-> Escape sequences can be used in strings as required 
+
+Escape sequences-
+
+Code	Output
+
+\'		single quote
+\"		double quote
+\\		backslash
+\n		newline
+\r		carriage return
+\t		tab
+\b		word boundary
+\f		form feed
+
+String concatenation-
+
+    let str1 = 'Hello';
+    let str2 = 'World';
+    let str = str1+str2; // str = 'HelloWorld'
+
+-> .length returns length of any string literal or variable
+
+    "Alan Peter".length; // returns 10
+
+Accessing character at specific index- 
+
+    let firstName = 'Charles';
+    let firstLetter = firstName[0]; // firstLetter = 'C'
+
+Common arithmetic operators-
+
+Operator 	Description
+
++ 			Addition
+- 			Subtraction
+* 			Multiplication
+** 			Exponentiation (ES2016)
+/ 			Division
+% 			Modulus (Remainder)
+++ 			Increment (prefix/postfix)
+-- 			Decrement (prefix/postfix)
++           Unary plus
+-           Unary negation
+
+Shorthand notation-
+
+    num+=2; -> num=num+2; (works with -,*,/) 
+
+Comparison operators-
+
+Operator    Description
+
+==          Equality
+!=          Inequality
+===         Strict equality
+!==         Strict inequality
+<           Less than
+>           Greater than
+<=          Less than or equal to
+>=          Greater than or equal to 
+
+Logical operators-
+
+Operator    Description
+
+||          OR operator
+&&          AND operator
+!           NOT operator
+
+Control structures-
+
+If-else block-
+
+    if (cond1) {    
+        ...
+    }
+    else if (cond2) {
+        ...
+    }
+    else {
+        ...
+    }
+
+Switch statement-
+
+    switch (expression) {
+        case choice1 :  ...
+                        break;
+        case choice2 :  ...
+                        break;
+        default: ...
+    }
+
+Ternary operator-
+
+Cond ? true eval : false eval;
+
+For loop- 
+
+    for ([initialExp]; [conditionExp]; [updateExp]) {
+        ...
+    }
+  
+Do while loop-
+
+    do {
+        ...
+    } while (condition);
+
+While loop-
+
+    while (condition) {
+        ...
+    }
+
+Functions declarations-
+
+    function funcName (arg1, arg2, ...argN) {
+        ...
+        return;
+    }
+
+Function expressions-
+
+    let funcName = function() {
+        ...
+    }
+
+-> Functions are values in JS and can be used in expressions and function parameters as well
+-> Function declarations are globally scoped and available everywhere in script
+-> Function expressions are only created when execution reaches them and unavailable to call before
+-> In strict mode, functions declared inside a block is visible only inside that block 
+
+Arrow functions (ES6)-
+
+    let funcName = (arg1, arg2, ...argN) => expression;
+    let funcName = arg => expression;
+    let funcName = () => expression;
+    let funcName = (...) => {
+        ...
+    }
+
+Arrays-
+
+    const person = ["John", "Doe", 46];
+    const carBrand = new Array ("KTM", "Volvo", "BMW");
+
+    let car = carBrand[0]; // car = "KTM"
+
+-> .length returns number of items in Array
+
+Array functions-
+
+.forEach() - executes a provided function once for each array element
+.push() - adds new items at end of array and returns new length
+.pop() - removes last item of array and returns that item
+.shift() - removes first item of array and returns that item
+.unshift() - adds new items at start of array and returns new length
+.concat() - merges multiple arrays and returns merged array
+.splice() - removes n items and add new items at given index and returns removed items
+.slice() - returns a part of array at specified indexes 
+
+Objects-
+
+    let user = new Object();    // "object constructor" syntax
+    let user = {};              // "object literal" syntax
+
+    let user = {            // an object
+        name: "John",       // key "name" store value "John"
+        age: 30             // key "age" store value 30
+        "is admin": true    // key "is admin" store true
+    };
+
+Dot notation-
+
+    name = user.name;    // name has value "John"
+
+Square notation- (used for identifiers with whitespaces)
+
+    adminCheck = user["is admin"];    // adminCheck has value true
+
+"delete" operator-
+
+    delete user.age;    // Removes "age" property from user object
+
+Property value shorthand-
+
+    function makeUser(name, age) {
+    return {
+        name: name,
+        age: age,
+        };
+    }
+    let user = makeUser("John", 30);
+
+    function makeUser(name, age) {
+    return {
+        name,    // same as name: name
+        age,     // same as age: age
+        };
+    }
+
+-> Property names have no limitations, can use any strings or symbols even reserved keywords
+-> Accessing non-existing property returns undefined which can tell if an object has given property
+
+"in" operator-
+
+    let user = { name: "John", age: 30 };
+    alert( "age" in user );     // true, user.age exists
+    alert( "city" in user );    // false, user.city doesn't exist
+
+for in loop-
+
+    for (let key in user) {
+        alert( key );           // Shows each property in object
+        alert( user[key] );     // Shows value of each property
+    }
+
+-> Integer properties are accessed in ascending order, normal properties are accessed in creation order

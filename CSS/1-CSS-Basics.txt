@@ -1,0 +1,186 @@
+Ways to apply CSS-
+
+1) Inline - directly in html tag
+    <h1 style="color:red">My site</h1>
+
+2) Internal - using <style> tag in <head> tag
+    <style type="text/css">
+    h1 {
+        color: red;
+    }
+    </style>
+
+3) External - by linking external .css file in <head> tag
+    <link rel="stylesheet" href="css/style.css">
+
+CSS selectors-
+
+Universal selector: applies to any type of element
+    * {
+    color: purple;
+    }
+
+Type selector: applies to all elements of given type
+    div {
+    color: white;
+    }
+
+Class selector: applies to all elements with given Class
+    .text-box {
+    color: red;
+    }
+
+ID selector: applies to unique element with given ID
+    #title {
+    background-color: red;
+    }
+
+Grouping selector: applies to all elements having any one of given class
+    .read, .unread {
+    color: white;
+    background-color: black;
+    }
+
+Chaining selector: applies to all elements having all the given class/ids
+    .subsection.header {
+    color: red;
+    }
+    .subsection#preview {
+    color: blue;
+    }
+
+Descendant Combinator: applies to any nested child element inside a parent element
+    parent child {
+        ...
+    }
+
+Child Combinator: applies to all child elements at given level
+    parent > child {
+        ...
+    }
+    parent > child > grandchild {
+        ...
+    }
+
+Adjacent Sibling Combinator: applies to adjacent sibling element only
+    element + adjacent-sibling {
+        ...
+    }
+
+Sibling Combinator: applies to all sibling elements
+    element ~ sibling-element {
+        ...
+    }
+
+Attribute Selectors-
+
+[attribute] - applies to any element with given attribute
+selector[attribute] - applies to elements with given selector and attribute
+[attribute="value"] - applies to element with given attribute and exact value
+
+[attribute^="value"] - will match strings from the start
+[attribute$="value"] - will match strings from the end
+[attribute*="value"] - will match anywhere inside the string
+
+CSS Specificity order (decreasing)-
+
+Inline style
+ID selectors 
+Class selectors
+Type selectors
+
+Pseudo classes-
+
+-> Pseudo class is a selector that selects elements that are in a specific state, for example-
+    :root
+    :first-child 
+    :last-child
+    :only-child
+    ::nth-child
+    :empty
+    :invalid
+    :hover
+    :focus
+
+Pseudo elements-
+
+-> Pseudo elements add markup based on specific state of elements, for example-
+    ::marker
+    ::first-letter
+    ::first-line
+    ::before
+    ::after
+    ::selection
+
+CSS variables-
+
+    --variable-name: value;
+
+CSS functions-
+    calc()
+    min()
+    max()
+    clamp()
+
+CSS size units-
+
+Absolute - px, in, cm 
+Relative - em, rem
+Viewport - vh, vw, vmin, vmax
+
+CSS box model properties-
+
+border - rectangular boundary of an element (px, %)
+padding - space between border and content of an element (px, %) 
+margin - space between outer elements around an element (px, %)
+
+Common CSS properties-
+
+-> Certain CSS properties like color, font-size, font-family are inherited from parent element while others are not
+
+box-sizing - sets how the total width and height of an element is calculated
+             (border-box/content-box)
+
+height - sets element's height (auto, px, %)
+
+width - sets element's width (auto, px, %)
+
+position - sets how an element is positioned in a document
+           (static[def]/relative/fixed/sticky along with left/top/bottom/right)
+
+color - sets color of element's text
+    color: white;
+    color: #1100ff;
+    color: rgb(100, 0, 127);
+
+background - shorthand for various background properties
+
+background-color - sets background color of element
+
+font-family - sets font of element's text
+
+font-size - sets font size (px, %, em)
+
+font-weight - affects boldness of text (1~1000)
+
+font-style - for styling text font
+
+letter-spacing - sets spacing b/w letters
+
+line-height - sets spacing b/w lines
+
+text-transform - sets case of text
+
+text-shadow - adds shadows to text
+
+text-align - sets alignment of text
+
+border - sets size, style and color of border
+
+border-radius - sets rounded corners of given size
+
+overflow - sets desired behavior for an element's overflow
+
+box-shadow - adds shadow effect around an element
+
+opacity - sets opacity of an element

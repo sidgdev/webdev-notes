@@ -1,0 +1,65 @@
+HTML 5 boilerplate code- 
+
+    <!-- Comment -->
+    <!DOCTYPE html>
+    <html lang="en">   
+    <head>
+        <meta charset="UTF-8">  
+        <title>Document Title</title>   
+    </head>
+    <body>
+        <!-- Page content -->
+    </body>
+    </html>
+
+Types of tags-
+
+1) Block - start on new line, takes whole width
+   Eg: <div>, <p>, <h1>
+   
+2) Inline - start on same line, takes required width
+   Eg: <span>, <img>, <a>
+
+Semantic tags-
+
+<h1> ~ <h6> - used for section headings 
+
+<nav> - used for navigation links
+
+<header> - used for introductory content like headings, logos etc
+
+<main> - contains dominant content of document
+
+<section> - used for generic standalone section of a document
+
+<aside> - used for indirect content like sidebars/call-out boxes
+
+<address> - used for contact information
+
+<article> - self-contained page/application which is independent or reusable
+
+<footer> - used for author information, copyright data or links to related documents 
+
+Commonly used tags-
+
+<link> - used for linking CSS stylesheets and favicons inside <head> element
+
+<div> - generic container 
+
+<p> - used for paragraphs
+
+<ul> - used for unordered list
+
+<ol> - used for ordered list
+
+<li> - used for list item
+
+<a> - used for hyperlinks
+
+<img> - used for adding images
+
+<table> - used for tables
+
+Refer MDN article for comprehensive list of elements-
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
