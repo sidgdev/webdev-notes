@@ -1,0 +1,170 @@
+Major JS design patterns-
+
+1) Plain Old JavaScript Objects and Object Constructors
+2) Factory Functions and the Module Pattern
+3) Classes
+4) ES6 Modules
+5) SOLID principles
+
+1) Object constructor-
+
+    function Player (name, marker) {
+        this.name = name
+        this.marker = marker
+        this.sayName = function() {
+            console.log(name)
+        }
+    }
+    const player1 = new Player('Steve', 'X')
+    player1.sayName()   // Logs 'Steve'
+
+-> In JS, we capitalize the first letter of a constructor function by convention.
+
+    Object.getPrototypeOf(player1) === Player.prototype             // Returns true
+    Object.getPrototypeOf(Player.prototype) === Object.prototype    // Returns true
+
+-> getPrototypeOf() returns prototype of object passed
+-> By default all objects and constructors inherit from Object.prototype (Prototypal Inheritance)
+
+    Player.prototype.greet = function () {
+        return `${this.name} says hello.`;
+    }
+
+-> It is a common practice in JS to define methods on the prototype for increased efficiency and code readability
+-> Object.keys only returns own keys while for..in loops over both own and inherited keys
+-> for..in loops will not show Object.prototype properties as they are not enumerable
+
+    player1.valueOf()                                     // Returns Object { name: "steve", marker: "X", sayName: sayName() }
+    Player.hasOwnProperty('valueOf');                     // Returns false as prototype only has sayName() 
+    Object.prototype.hasOwnProperty('valueOf');           // Returns true as valueOf() is defined in Object.prototype 
+    Object.prototype.hasOwnProperty('hasOwnProperty');    // Returns true also
+    Object.getPrototypeOf(Object.prototype)               // Returns null as inheritance chain ends  
+
+-> player1 can access valueOf() as it looks down the prototype chain player1 -> Player -> Object
+
+    Object.setPrototypeOf(Player.prototype, Person.prototype)    // Player inherits from Person
+
+    Player.prototype = Person.prototype     // Player.prototype directly refers to Person.prototype instead of inheriting
+
+-> Using setPrototypeOf() is better as changes in prototype doesn't impact others constructor prototype       
+-> isPrototypeOf() can check if an object inherits from certain prototype
+-> instanceof operator checks whether the prototype property of a constructor appears anywhere within an object’s prototype chain
+
+    function Hero (name, level) {
+    this.name = name;
+    this.level = level;
+    }
+
+    function Warrior (name, level, weapon) {
+        Hero.call(this, name, level);           // Copy constructor properties with call()
+        this.weapon = weapon;                   // Add a new property      
+    }
+
+-> call() can copy over properties from one constructor into another constructor
+-> Prototype properties and methods are not automatically linked when you use call() to chain constructors, use Object.setPropertyOf()
+
+2.1) Factory Function-
+
+    const personFactory = (name) => {
+        const sayHello = () => console.log(`hello ${name}`);
+        return { name, sayHello };                              // New object shorthand
+    };
+    const person = personFactory('jeff');
+
+-> Factory functions are like regular functions that set up and return object, they don't use "new" keyword like object constructors
+-> Factory functions can implement private variables and functions through closure 
+
+-> Inheritance can be achieved by using destructuring assignment on a property of inherited object inside another factory function-
+
+    const {sayName} = personFactory(name);
+
+-> To inherit everything, Object.assign() can be used-
+
+    const Nerd = (name) => {
+        const prototype = Person(name);
+        const doSomethingNerdy = () => console.log('nerd stuff');
+        return Object.assign({}, prototype, {doSomethingNerdy});
+    }
+
+2.2) Module pattern-
+
+    var myModule = (function() {
+        'use strict';
+
+        var _privateProperty = 'Hello World';
+        var publicProperty = 'I am a public property';
+
+        function _privateMethod() {
+            console.log(_privateProperty);
+        }
+
+        function publicMethod() {
+            _privateMethod();
+        }
+
+        return { publicProperty, publicMethod }
+        
+    })();
+
+    myModule.publicMethod();                    // outputs 'Hello World'
+    console.log(myModule.publicProperty);       // outputs 'I am a public property'
+    console.log(myModule._privateProperty);     // is undefined protected by the module closure
+    myModule._privateMethod();                  // is TypeError protected by the module closure
+
+-> Module pattern is based on IIFE (Immediately Invoked Function Expression) which can make private and public properties through closure
+-> As convention, private properties are named with underscore in beginning 
+
+3) Classes-
+
+    class MyClass {
+        publicProp = value;         // public property with default value
+        #pvtProp;                   // private property
+        static prop;                // static property
+
+        constructor (...) { 
+            this.prop = arg;
+            ...
+        }
+
+        publicMethod (...) {}       // public method
+        #pvtMethod (...) {}         // private method
+        static method ()            // static method
+
+        get something () {          // getter method
+            return this.prop;
+        }
+
+        set something (...) {       // setter method
+            this.prop = arg;
+        }
+    }
+
+-> classes use strict mode by default and can be used as declaration or expression
+-> 'extends' keyword can create a class as a child of another constructor (either class or function)
+-> child classes can use 'super' keyword to access properties or invoke constructor of a superclass
+
+4) ES6 Modules-
+
+    // a file called myModule.js
+    
+    const functionOne = () => 'ONE';
+    const functionTwo = () => 'TWO';
+
+    export {
+    functionOne,
+    functionTwo
+    };
+
+    // index.js file
+    
+    import {functionOne, functionTwo} from './myModule';
+
+-> Modules use strict mode by default
+
+5) SOLID principles-
+
+    Single Responsibility Principle
+    Open-Closed Principle
+    Liskov Substitution Principle
+    Interface Segregation Principle
+    Dependency Inversion Principle

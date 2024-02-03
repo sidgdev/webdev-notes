@@ -18,8 +18,9 @@ Declaring a variable-
     let varTwo; (ES6) 
     const varThree; (ES6)
 
--> let is preferred way of declaring variables and constants with const under ES6 standard
 -> Variable names can be made up of numbers, letters, and $ or _, but may not contain spaces or start with a number
+-> let is preferred way of declaring variables and constants with const under ES6 standard
+-> while var variables have global/function scope, let and const variables have block scope 
 
 A value can be assigned with the assignment operator (=)-
 
@@ -27,14 +28,14 @@ A value can be assigned with the assignment operator (=)-
 
 JS datatypes-
 
-Number (int, float, Infinity, -Infinity, NaN)
+Number (integer/float, Infinity, -Infinity, NaN)
 BigInt 
 String
 Boolean (true/false)
-null
-undefined
-Object
-symbol
+Symbol
+Null (null)
+Undefined (undefined)
+Object 
 
 -> When variables are declared, they have an initial value of undefined 
 -> If you do a mathematical operation on an undefined variable, your result will be NaN which means "Not a Number" 
@@ -198,6 +199,8 @@ Arrays-
 
 Array functions-
 
+.map() - creates new array populated with results of provided function on every element in calling array
+.filter() - creates shallow copy filtered down to elements from given array that pass test implemented by provided function
 .forEach() - executes a provided function once for each array element
 .push() - adds new items at end of array and returns new length
 .pop() - removes last item of array and returns that item
@@ -264,3 +267,11 @@ for in loop-
     }
 
 -> Integer properties are accessed in ascending order, normal properties are accessed in creation order
+
+Spread syntax (...)-
+
+-> spreads arrays, strings, objects in function calls or array/object literals (objects don't spread in array literals)
+
+    func (a, ...arr, b)
+    [1, ...obj, ...'str', 6, 'xyz']
+    {...obj, key: 'value'}

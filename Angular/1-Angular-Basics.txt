@@ -1,0 +1,92 @@
+Basic Angular CLI commands-
+
+	ng build		// Compiles Angular app into output directory
+	ng serve		// Builds and serves app, rebuilding on file changes
+	ng generate		// Generates or modifies files based on schematic
+	ng test			// Runs unit tests on given project
+	ng e2e			// Builds and serves Angular app, then runs end-to-end tests
+	
+Setting up Angular app-
+
+	npm install -g @angular/cli		// Angular CLI as global NPM package
+	
+	ng new projectname --routing=false --style=css		// Creating new Angular app at current directory
+
+Key files that the CLI generates automatically include-
+
+	app.module.ts		 	// Specifies files that app uses, acts as central hub for other files in your app
+	app.component.ts	 	// Contains logic for app's main page
+	app.component.html	 	// Contains HTML template for AppComponent
+	app.component.css	 	// Contains styles for AppComponent
+	app.component.spec.ts	// For testing
+
+Component in Angular is made up of 3 main parts—
+
+1) template - contains HTML markup of a component
+2) styles - contains styling of component
+3) class - contains logic of component
+
+An example class file-
+
+	import { Component } from "@angular/core";
+
+	@Component({							// Component decorator to specify metadata
+	selector: "app-item",					// CSS selector name of component which can be reused in other components
+	templateUrl: "./item.component.html",	// Location of component template
+	styleUrls: ["./item.component.css"],	// Location of component styles
+	})
+
+	export class ItemComponent {
+		title = 'ToDo';
+
+		filter: 'all' | 'active' | 'done' = 'all';
+
+		allItems = [
+			{ description: 'eat', done: true },
+			{ description: 'sleep', done: false },
+		];
+
+		get items() {
+			if (this.filter === 'all') {
+			return this.allItems;
+			}
+
+			return this.allItems.filter((item) =>
+			this.filter === 'done' ? item.done : !item.done
+			);
+		}
+
+		addItem(description: string) {
+			this.allItems.unshift({
+			description,
+			done: false
+			});
+		}
+	}
+
+An example template file-
+
+	<div class="main">
+		<h1>{{ title }}</h1>												// Component variable from class
+
+		<input
+			#newItem														// Template variable to access element value
+			placeholder="add an item"
+			(keyup.enter)="addItem(newItem.value); newItem.value = ''"		// Enter event invoking class function		
+			class="lg-text-input"
+			id="addItemInput" 
+		/>
+		
+		<button 
+			class="btn-primary" 
+			(click)="addItem(newItem.value); newItem.value = ''">			// Button event invoking class function
+				Add
+		</button>
+		
+		<ul>
+			<li *ngFor="let item of items">{{item.description}} - {{item.done}}</li>	// Angular directive
+		</ul>
+	</div>
+
+-> @Component() decorator in class specifies metadata (template and styles) 
+-> @Input() and @Output() decorators are used for data sharing between components

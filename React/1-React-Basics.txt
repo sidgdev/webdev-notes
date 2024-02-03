@@ -1,0 +1,64 @@
+Importing react in 2 ways-
+1) Improper way (through scripts via CDN)
+2) Proper way (through bundler like Vite)
+
+Creating a new react app with Vite-
+
+    npm create vite@latest my-react-app -- --template react
+
+React features-
+
+-> React is declarative in nature (JSX)
+-> React is composable in nature allowing to make components which can be reused, organized & imported as required
+
+React component-
+
+    import React from "react"
+    import ReactDOM from "react-dom/client"
+
+    function MyPage() {
+        const page = "this is some content"
+        return (
+            <>
+                <h1> A title! </h1>
+                <p className = "content"> { page } </p>    // variables are accessed in {}
+            </>
+        )
+    }
+
+    export default MyPage;
+
+To render React component-
+
+-> Before react v18 - ReactDOM.render(<MyPage/>, document.getElementById("root")) - deprecated
+-> From react v18 - ReactDOM.createRoot(document.getElementById("root")).render(MyPage)
+
+React components & JSX-
+
+-> React components use JSX (JS + XML) & are named in pascal case
+-> React components can only return single element which may have nested child elements
+-> Set of sibling elements can be passed with a fragment <>...</>
+-> As JSX combines XML & JS, certain attribute names can be same as JS keywords, other attribute names are used 
+   For example - className attribute instead of class
+-> From React v17 importing react is not required to use JSX as it uses new JSX transform
+
+React props-
+
+    <MyComponent varName = "data">
+
+    function MyComponent() {
+        return (
+            <p> My value is { props.varName } </p>
+        )
+    }
+
+-> Props are properties passed to components written like attributes inside component calls 
+-> Props can only be passed from parent to child components and is read only
+
+Callback props-
+
+-> Callback prop is a function passed as prop to get data from child to parent component
+
+React hooks-
+
+-> Hooks are special react functions for managing component state and other properties 

@@ -8,6 +8,8 @@ grid-template-rows: px/fr/%; - sets number of rows in grid
 
 grid-template: rows / columns; - sets number of rows and columns in grid
 
+grid-template-areas: - specifies named grid areas establishing the cells in the grid
+
 grid-auto-rows: px/fr/%; - sets number of rows for implicit grid items
 
 grid-auto-columns: px/fr/%; - sets number of columns for implicit grid items
@@ -55,9 +57,9 @@ grid-column: grid-column-start / grid-column-end;
 
 grid-row: grid-row-start / grid-row-end;
 
-z-index: - sets position of display order of overlapping items (higher value -> higher order)
+grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end; (or grid template name)
 
-grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end; 
+z-index: - sets position of display order of overlapping items (higher value -> higher order)
 
 -> span (n) can specify number of tracks to span to after a grid line
     grid-row: 1 / span 3;

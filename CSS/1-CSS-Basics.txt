@@ -148,6 +148,8 @@ width - sets element's width (auto, px, %)
 position - sets how an element is positioned in a document
            (static[def]/relative/fixed/sticky along with left/top/bottom/right)
 
+aspect-ratio - set desired width-to-height ratio of an element's box
+
 color - sets color of element's text
     color: white;
     color: #1100ff;

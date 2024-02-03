@@ -10,7 +10,7 @@ Form controls-
 
     <form action="example.com/path" method="post">
         <label for="first_name"> First Name: </label>
-        <input type="text" id="first_name" name="first_name" placeholder="Enter name">
+        <input type="text" id="first_name" name="first_name" placeholder="Enter name"/>
     </form>
 
 -> for attribute of label associates it with particular form control

@@ -33,6 +33,15 @@ Commands for deleting branch remotely-
 
     git push --delete <remote name> <branch name> (in general, remote will be origin)
 
+Command to set up git in existing project directory-
+
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git branch -M main
+    git remote add origin git@github.com:sidgdev/dummy.git
+    git push -u origin main
+
 List of standard commit messages-
 
 feat - new feature

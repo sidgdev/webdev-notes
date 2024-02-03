@@ -1,0 +1,31 @@
+NVM -
+
+    nvm install --lts
+    
+    nvm use 18.15.0 (node version)
+    
+NPM and node-
+
+	node prgram.js
+	
+	npm init (Intialises app directory and creates package.json)
+	
+	npm install pckgname (Installs package as production dependency)
+	
+	npm install pckgname --save-dev (Installs package as dev dependency)
+	
+	"scripts": {
+  	"lint": "eslint src/js"
+	}
+
+	npm run-script lint 
+	or 
+	npm run lint
+	
+	express appname
+	
+	npx express-generator appname (doesn't install package on sys)
+	
+	DEBUG=appname:* npm start
+	
+	node populatedb "mongodb+srv://admin:mongo@cluster0.jldkogt.mongodb.net/ticketdb?retryWrites=true&w=majority"

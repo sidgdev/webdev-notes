@@ -1,49 +1,36 @@
 -> Document Object Model (DOM) is a tree-like representation of the contents of a webpage 
 -> DOM consists of nodes arranged in heirarchy as parent and child nodes representing each element in webpage
 
+DOM methods-
+
 Selecting nodes in DOM-
 
 -> Nodes can be selected using combination of CSS-style selectors and relationship properties
 
-    <div id="container">                (Parent node)
-        <div class="display"></div>     (Sibling node)
-        <div class="controls"></div>    (Sibling node)
-    </div>
-
-CSS selectors- 
-
-div.display
-.display
-#container > .display
-div#container > div.display
-
-    console.dir(container.firstElementChild);       //Selects display 
-    console.dir(container.lastElementChild);        //Selects controls
-    console.dir(controls.previousElementSibling);   //Selects display 
-
-DOM methods-
-
 Query selector-
 
-element.querySelector(selector) - returns a reference to the first match of selector
-element.querySelectorAll(selectors) - returns a nodelist containing references to all of the matches of the selectors
+    document.querySelector(selector) - returns a reference to the first match of selector
+    document.querySelectorAll(selector) - returns a nodelist containing references to all of the matches of the selector
+
+-> querySelector() sends a live node whereas querySelectorAll() sends a static non-live matched nodelist of elements
+-> for...in loop doesn't work on nodelist like array, use for...of loop for nodelist
 
 Create element-
 
-document.createElement(tagName, [options]) - creates a new element of tag type tagName
-
+    document.createElement(tagName, [options]) - creates a new element of tag type tagName
     const div = document.createElement('div');
 
 -> This method only creates element in memory not DOM
 
 Append elements-
 
-parentNode.appendChild(childNode) - appends childNode as the last child of parentNode
-parentNode.insertBefore(newNode, referenceNode) - inserts newNode into parentNode before referenceNode
+    parentNode.appendChild(childNode) - appends childNode as the last child of parentNode
+    parentNode.insertBefore(newNode, referenceNode) - inserts newNode into parentNode before referenceNode
 
 Remove elements-
 
-parentNode.removeChild(child) - removes child from parentNode on the DOM and returns a reference to child
+    currentNode.remove() - removes the element from the DOM
+    parentNode.removeChild(child) - removes child from parentNode on the DOM and returns a reference to child
 
 Altering elements-
 

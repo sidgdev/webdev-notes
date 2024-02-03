@@ -1,0 +1,110 @@
+Installing webpack and CLI utility-
+
+    npm install webpack webpack-cli --save-dev
+
+Command to run webpack bundler-
+
+    npx webpack
+
+Loader to import CSS files-
+
+    npm install --save-dev style-loader css-loader
+
+Loader to import CSV and XML files-
+
+    npm install --save-dev csv-loader xml-loader
+
+webpack packages to import toml, yaml and json5 files-
+
+    npm install toml yamljs json5 --save-dev
+
+HtmlWebpackPlugin for auto generating dist/index.html-
+
+    npm install --save-dev html-webpack-plugin
+
+Command to install webpack-dev-server-
+
+    npm install --save-dev webpack-dev-server
+
+-> webpack scripts for build, watch & server in package.json-
+
+    "scripts": {
+        "build": "webpack",
+        "watch": "webpack --watch",
+        "start": "webpack serve --open",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+
+-> webpack can be configured through webpack.config.js
+
+    const path = require('path');
+    const toml = require('toml');
+    const yaml = require('yamljs');
+    const json5 = require('json5');
+    const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+    module.exports = {
+    mode: 'development',                            // setting mode to development
+    entry: {                                        // configuring entry
+        index: './src/index.js',
+        print: './src/print.js',
+    },
+    devtool: 'inline-source-map',                   // using inbuilt source maps
+    devServer: {                                    // using webpack dev server
+        static: './dist',
+    },
+    plugins: [                                      // using HtmlWebpackPlugin
+        new HtmlWebpackPlugin({
+        title: 'My Project',
+        }),
+    ],
+    output: {                                       // configuring output
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true,                                // removes unbundled files 
+    },
+    optimization: {                                 // optimization for dev server for multiple entries
+        runtimeChunk: 'single',
+    },
+    module: {
+        rules: [
+        {                                           // configuring CSS
+            test: /\.css$/i,             
+            use: ['style-loader', 'css-loader'],
+        },
+        {                                           // configuring images
+            test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            type: 'asset/resource',
+        },
+        {                                           // configuring CSV
+            test: /\.(csv|tsv)$/i,
+            use: ['csv-loader'],
+        },
+        {                                           // configuring XML
+            test: /\.xml$/i,
+            use: ['xml-loader'],
+        },
+        {                                           // configuring toml
+            test: /\.toml$/i,
+            type: 'json',
+            parser: {
+            parse: toml.parse,
+            },
+        },
+        {                                           // configuring yaml
+            test: /\.yaml$/i,
+            type: 'json',
+            parser: {
+            parse: yaml.parse,
+            },
+        },
+        {                                           // configuring json5
+            test: /\.json5$/i,
+            type: 'json',
+            parser: {
+            parse: json5.parse,
+            },
+        },
+        ],
+    },
+    };
