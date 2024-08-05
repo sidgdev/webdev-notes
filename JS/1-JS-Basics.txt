@@ -75,16 +75,16 @@ Accessing character at specific index-
     let firstName = 'Charles';
     let firstLetter = firstName[0]; // firstLetter = 'C'
 
-Common arithmetic operators-
+JS arithmetic operators-
 
 Operator 	Description
 
 + 			Addition
 - 			Subtraction
 * 			Multiplication
-** 			Exponentiation (ES2016)
 / 			Division
 % 			Modulus (Remainder)
+** 			Exponentiation (ES2016)
 ++ 			Increment (prefix/postfix)
 -- 			Decrement (prefix/postfix)
 +           Unary plus

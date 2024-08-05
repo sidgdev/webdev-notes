@@ -1,0 +1,97 @@
+Comments in Python-
+
+    # single line comment
+
+Variable assignment-
+
+    varName = exp / value
+
+-> Python supports primitive & composite data types like str, int, float, bool, list, dict, set
+-> Boolean values - True (1), False (0)
+-> None, 0, and empty strings/lists/dicts/tuples/sets all evaluate to False, all other values are True
+-> bool() function evaluates truth value of object passed
+
+-> Python has print() & input() function to take I/O from console
+
+	print("Hello, World", end="!")    				 # => prints <Hello, World!> on console
+	input_string_var = input("Enter some data: ")    # Returns data from console as string
+
+Arithmetic operators-
+
+Operator 	Description
+
++ 			Addition
+- 			Subtraction
+* 			Multiplication
+** 			Exponentiation 
+/ 			Division
+//          Floor Division
+% 			Modulus (Remainder)
+
+Comparison operators-
+
+Operator    Description
+
+==          Equality
+!=          Inequality
+<           Less than
+>           Greater than
+<=          Less than or equal to
+>=          Greater than or equal to 
+
+Logical operators-
+
+Operator    Description
+
+or          OR operator
+and         AND operator
+not         NOT operator
+
+Strings-
+
+-> Strings are created with " or ' 
+
+    "This is a string."
+    'This is also a string.'
+
+    """ Multiline strings can be written using three "s, 
+        and are often used as documentation.
+    """
+
+-> Strings can be concatenated with + and string literals can concatenate without +
+
+	str2 = "world!"
+    "Hello " + str2		# => "Hello world!"
+    "Hello " "world!"   # => "Hello world!"
+
+-> any character on string literal can be accessed like this-
+
+	"Hello world!"[0]	# => 'H'
+	
+-> len() returns length of string
+
+	len("This is a string")    # => 16
+
+-> From Python 3.6, formatted string literals / f-strings can be used
+
+	# Any valid Python expression inside these braces is returned to the string.
+	name = "Reiko"
+	f"She said her name is {name}."    # => "She said her name is Reiko"
+
+Control structures-
+
+If-else block-
+
+	if (cond1):
+		...	
+	elif (cond2):    
+		...
+	else:  
+		...
+
+
+
+	
+
+
+
