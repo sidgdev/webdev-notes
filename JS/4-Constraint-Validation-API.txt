@@ -1,0 +1,30 @@
+Constraint Validation API-
+
+Constraint Validation API consists of  set of methods and properties available on following form element DOM interfaces-
+
+HTMLButtonElement (represents <button> element)
+HTMLFieldSetElement (represents <fieldset> element)
+HTMLInputElement (represents <input> element)
+HTMLOutputElement (represents <output> element)
+HTMLSelectElement (represents <select> element)
+HTMLTextAreaElement (represents <textarea> element) 
+ 
+Constraint Validation API properties-
+
+validationMessage - returns localized message describing constraints not satisfied 
+validity - returns ValidityState object containing properties describing validity state of element
+patternMismatch - returns true if value does not match specified pattern, and false if it does match
+tooLong - returns true if value is longer than maximum length specified by maxlength attribute otherwise false 
+tooShort - returns true if value is shorter than minimum length specified by minlength attribute otherwise false 
+rangeOverflow - returns true if value is greater than maximum specified by max attribute otherwise false 
+rangeUnderflow - returns true if value is less than minimum specified by min attribute otherwise false  
+typeMismatch - returns true if value is not in required syntax (when type is email or url), or false if syntax is correct 
+valid - returns true if element meets all its validation constraints, or false if it fails any constraint
+valueMissing - returns true if element has required attribute, but no value, or false otherwise 
+willValidate - returns true if element will be validated when form is submitted; false otherwise
+
+Constraint Validation API methods-
+
+checkValidity() - returns true if element's value is valid, otherwise false; this method also fires an invalid event on element
+reportValidity() - reports invalid field(s) using events; this method is useful in with preventDefault() in an onSubmit event handler
+setCustomValidity(message) - adds custom error message to element; if you set custom error message, element is considered to be invalid

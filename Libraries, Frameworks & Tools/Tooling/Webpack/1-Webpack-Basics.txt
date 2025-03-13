@@ -14,7 +14,7 @@ Loader to import CSV and XML files-
 
     npm install --save-dev csv-loader xml-loader
 
-webpack packages to import toml, yaml and json5 files-
+Webpack packages to import toml, yaml and json5 files-
 
     npm install toml yamljs json5 --save-dev
 
@@ -26,7 +26,7 @@ Command to install webpack-dev-server-
 
     npm install --save-dev webpack-dev-server
 
--> webpack scripts for build, watch & server in package.json-
+-> Webpack scripts for build, watch & server in package.json-
 
     "scripts": {
         "build": "webpack",
@@ -35,7 +35,17 @@ Command to install webpack-dev-server-
         "test": "echo \"Error: no test specified\" && exit 1"
     },
 
--> webpack can be configured through webpack.config.js
+Webpack modes-
+
+-> To use development or production mode separate webpack configs can be used
+-> webpack-merge tool can steamline multiple webpack configs
+
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack serve --config webpack.dev.js"
+
+-> Webpack template repository can be used as boilerplate to save time on configuration
+
+webpack.config.js file-
 
     const path = require('path');
     const toml = require('toml');

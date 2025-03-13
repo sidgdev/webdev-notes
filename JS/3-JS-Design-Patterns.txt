@@ -62,6 +62,8 @@ Major JS design patterns-
 
 -> call() can copy over properties from one constructor into another constructor
 -> Prototype properties and methods are not automatically linked when you use call() to chain constructors, use Object.setPropertyOf()
+-> Using object constructors without new keyword can lead to harder to resolve errors
+-> instanceof can't confirm if object was made with specific constructor since the constructor’s prototype can be reassigned after creation
 
 2.1) Factory Function-
 
@@ -73,7 +75,6 @@ Major JS design patterns-
 
 -> Factory functions are like regular functions that set up and return object, they don't use "new" keyword like object constructors
 -> Factory functions can implement private variables and functions through closure 
-
 -> Inheritance can be achieved by using destructuring assignment on a property of inherited object inside another factory function-
 
     const {sayName} = personFactory(name);
@@ -89,8 +90,6 @@ Major JS design patterns-
 2.2) Module pattern-
 
     var myModule = (function() {
-        'use strict';
-
         var _privateProperty = 'Hello World';
         var publicProperty = 'I am a public property';
 
@@ -111,7 +110,9 @@ Major JS design patterns-
     console.log(myModule._privateProperty);     // is undefined protected by the module closure
     myModule._privateMethod();                  // is TypeError protected by the module closure
 
--> Module pattern is based on IIFE (Immediately Invoked Function Expression) which can make private and public properties through closure
+-> Module pattern is best for hiding variables and functions as private instead of creating multiple objects
+-> Module pattern is based on IIFE (Immediately Invoked Function Expression) having a factory function inside
+-> Module pattern was used for modular code before ES6 modules hence the name
 -> As convention, private properties are named with underscore in beginning 
 
 3) Classes-
@@ -139,7 +140,7 @@ Major JS design patterns-
         }
     }
 
--> classes use strict mode by default and can be used as declaration or expression
+-> classes use get and set keywords for getter and setter functions
 -> 'extends' keyword can create a class as a child of another constructor (either class or function)
 -> child classes can use 'super' keyword to access properties or invoke constructor of a superclass
 
@@ -147,24 +148,25 @@ Major JS design patterns-
 
     // a file called myModule.js
     
+	const funcval = 10;
     const functionOne = () => 'ONE';
     const functionTwo = () => 'TWO';
 
-    export {
-    functionOne,
-    functionTwo
-    };
+    export default functionOne;		// default export		
+	export {funcval, functionTwo};	// named export 
 
     // index.js file
     
-    import {functionOne, functionTwo} from './myModule';
+    import funcOne, {functionTwo} from './myModule';	// imports functionOne, functionTwo
 
--> Modules use strict mode by default
+-> named imports/exports is special syntax and is not related in any way to declaring object literals or destructuring
+-> only single thing can exported in default export and can be renamed while importing
+-> Node.js uses CommonJS (CJS) which uses syntax like require and module.exports instead of import and export
 
 5) SOLID principles-
 
-    Single Responsibility Principle
-    Open-Closed Principle
-    Liskov Substitution Principle
-    Interface Segregation Principle
-    Dependency Inversion Principle
+    Single Responsibility Principle - every class should have only one responsibility
+    Open-Closed Principle - software entities should be open for extension, but closed for modification
+    Liskov Substitution Principle - functions using pointers/references to base classes must be able to use objects of derived classes without knowing it
+    Interface Segregation Principle - clients should not be forced to depend upon interfaces that they do not use
+    Dependency Inversion Principle - depend upon abstractions, not concretes

@@ -153,11 +153,15 @@ aspect-ratio - set desired width-to-height ratio of an element's box
 color - sets color of element's text
     color: white;
     color: #1100ff;
-    color: rgb(100, 0, 127);
+    color:rgb(100, 0, 127);
 
 background - shorthand for various background properties
 
 background-color - sets background color of element
+
+border - sets size, style and color of border
+
+outline - sets size, style and color of outline
 
 font-family - sets font of element's text
 
@@ -176,8 +180,6 @@ text-transform - sets case of text
 text-shadow - adds shadows to text
 
 text-align - sets alignment of text
-
-border - sets size, style and color of border
 
 border-radius - sets rounded corners of given size
 
