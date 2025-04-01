@@ -1,0 +1,56 @@
+transform property-
+
+2D transformations-
+
+    transform: rotate();    // accepts deg, rad, turn as input
+    transform: scaleX();
+    transform: scaleY();
+    transform: scaleXY();
+    transform: scale();
+    transform: skewX();
+    transform: skewY();
+    transform: skew();
+    transform: translateX();
+    transform: translateY();
+    transform: translate();
+
+3D transformations-
+
+    transform: rotateX();
+    transform: rotateY();
+    transform: rotateZ();
+    transform: rotate3d();
+    transform: scaleZ();
+    transform: scale3d();
+    transform: translateZ();
+    transform: translate3d();
+    transform: matrix();
+    transform: matrix3d();
+
+transition property-
+
+    transition-property: background-color;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    transition-delay: 0.25s;
+    transition: background-color 1s ease-out 0.25s;    // shorthand property
+
+animation property-
+
+    animation-duration: 2s;
+    animation-name: example-animation;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    @keyframes example-animation {
+        from {
+            background-color: red;
+        }
+        50% {
+            transform: scale(2);
+            background-color: blue;
+        }
+        to {
+            background-color: green;
+        }
+    }

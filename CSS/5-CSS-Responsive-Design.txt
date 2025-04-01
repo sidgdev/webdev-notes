@@ -1,0 +1,39 @@
+Screen size range-
+
+smallest mobile screen - 320 px
+ultrawide monitor - set max width and center content 
+
+viewport meta tag-
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+-> sets initial width of webpage to size of actual screen without any zooming in
+
+Guidelines for responsive design-
+
+-> Avoid fixed width and height - use max-width or min-height (min-width and max-height depending on context)
+-> Avoid heights altogether
+-> Fixed widths are appropriate for certain components (icons, sidebar etc)
+-> Use flex and grid
+
+Responsive Images-
+
+    background-size: cover;
+    background-position: center;
+
+-> background-size & ackground-position works for background Images
+
+    object-fit: cover;
+
+-> object-fit works for images similar to background-size
+
+Media Queries-
+
+CSS media queries are used to apply different styles to different devices or screen sizes
+
+    @media (max-width: 600px) {
+        body {
+        margin: 8px;
+        }
+    }
+    

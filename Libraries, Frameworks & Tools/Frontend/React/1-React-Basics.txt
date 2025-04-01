@@ -1,46 +1,64 @@
-Importing react in 2 ways-
-1) Improper way (through scripts via CDN)
-2) Proper way (through bundler like Vite)
+Toolchains to setup react-
+1) Vite
+2) Gatsby
+3) NextJS
+4) Create React App (deprecated)
+5) via CDN in script tag
+
+Setting up react from scratch-
+
+Package Management (NPM, Yarn)
+Module bundling (Webpack, Parcel)
+Compilation (Babel)
+React itself
 
 Creating a new react app with Vite-
 
     npm create vite@latest my-react-app -- --template react
 
+Using existing repo-
+
+    npm create vite@latest . -- --template react
+
 React features-
 
--> React is declarative in nature (JSX)
+-> React is declarative in nature 
+-> React uses JSX which allows to write HTML-like markup inside JS file
 -> React is composable in nature allowing to make components which can be reused, organized & imported as required
 
-React component-
+React DevTools-
 
-    import React from "react"
-    import ReactDOM from "react-dom/client"
+-> checking component props and state (components Tab)
+-> checking component rendering performance (Profiler Tab)
+-> checking context values passed to components and global state 
 
-    function MyPage() {
-        const page = "this is some content"
-        return (
-            <>
-                <h1> A title! </h1>
-                <p className = "content"> { page } </p>    // variables are accessed in {}
-            </>
-        )
-    }
+React main component overview-
 
-    export default MyPage;
+    import { StrictMode } from "react";
+    import { createRoot } from "react-dom/client";
+    import App from "./App.jsx";
+    import "./index.css";
 
-To render React component-
+    createRoot(document.getElementById("root")).render(
+        <StrictMode>
+            <App />
+        </StrictMode>,
+    );
 
--> Before react v18 - ReactDOM.render(<MyPage/>, document.getElementById("root")) - deprecated
--> From react v18 - ReactDOM.createRoot(document.getElementById("root")).render(MyPage)
+Rules of JSX-
 
-React components & JSX-
+1) Return a single root element (fragments can be used)
+2) Close all the tags
+3) camelCase for most things
 
--> React components use JSX (JS + XML) & are named in pascal case
--> React components can only return single element which may have nested child elements
--> Set of sibling elements can be passed with a fragment <>...</>
--> As JSX combines XML & JS, certain attribute names can be same as JS keywords, other attribute names are used 
-   For example - className attribute instead of class
--> From React v17 importing react is not required to use JSX as it uses new JSX transform
+JavaScript in JSX with Curly Braces-
+
+You can only use curly braces in two ways inside JSX-
+
+1) As text directly inside a JSX tag
+2) As attributes immediately following the = sign
+
+-> double curlies can be used to pass inline CSS and objects to JSX
 
 React props-
 

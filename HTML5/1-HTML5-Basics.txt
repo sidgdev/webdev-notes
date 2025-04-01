@@ -61,5 +61,16 @@ Commonly used tags-
 <table> - used for tables
 
 Refer MDN article for comprehensive list of elements-
-
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+HTML Escape codes-
+
+-> represent characters in HTML that have special meanings and might be interpreted incorrectly by browser if used directly
+
+Common HTML Escape Codes-
+
+&lt; - < (less than)
+&gt; - > (greater than)
+&amp; - & (ampersand)
+&quot; - " (double quote)
+&apos; - ' (apostrophe) (not universally supported in HTML, but works in XML)
