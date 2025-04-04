@@ -22,9 +22,8 @@ Using existing repo-
 
 React features-
 
--> React is declarative in nature 
--> React uses JSX which allows to write HTML-like markup inside JS file
 -> React is composable in nature allowing to make components which can be reused, organized & imported as required
+-> React components are JS functions which uses JSX syntax which allows to write HTML-like markup inside JS file
 
 React DevTools-
 
@@ -32,24 +31,12 @@ React DevTools-
 -> checking component rendering performance (Profiler Tab)
 -> checking context values passed to components and global state 
 
-React main component overview-
-
-    import { StrictMode } from "react";
-    import { createRoot } from "react-dom/client";
-    import App from "./App.jsx";
-    import "./index.css";
-
-    createRoot(document.getElementById("root")).render(
-        <StrictMode>
-            <App />
-        </StrictMode>,
-    );
-
 Rules of JSX-
 
-1) Return a single root element (fragments can be used)
-2) Close all the tags
-3) camelCase for most things
+1) All react components start with capital letter to differentiate from usual markup
+2) Return a single root element (fragments can be used) 
+3) Close all the tags
+4) camelCase for most things
 
 JavaScript in JSX with Curly Braces-
 
@@ -58,7 +45,11 @@ You can only use curly braces in two ways inside JSX-
 1) As text directly inside a JSX tag
 2) As attributes immediately following the = sign
 
--> double curlies can be used to pass inline CSS and objects to JSX
+-> double curlies are used to write inline CSS and objects to JSX
+
+React Pitfalls-
+
+-> Components can render other components, never nest their definitions instead use props to pass data
 
 React props-
 
