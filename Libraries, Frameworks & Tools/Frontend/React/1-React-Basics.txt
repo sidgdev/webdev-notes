@@ -44,8 +44,7 @@ You can only use curly braces in two ways inside JSX-
 
 1) As text directly inside a JSX tag
 2) As attributes immediately following the = sign
-
--> double curlies are used to write inline CSS and objects to JSX
+3) Double curlies are used to write inline CSS and objects to JSX
 
 React Pitfalls-
 
@@ -53,16 +52,51 @@ React Pitfalls-
 
 React props-
 
-    <MyComponent varName = "data">
+    function Button(props) {
+    const buttonStyle = {
+        color: props.color,
+        fontSize: props.fontSize + 'px'
+        };
 
-    function MyComponent() {
-        return (
-            <p> My value is { props.varName } </p>
-        )
+    return (
+        <button style={buttonStyle}>{props.text}</button>
+        );
+    }
+
+    export default function App() {
+    return (
+        <div>
+            <Button text="Click Me!" color="blue" fontSize={12} />
+        </div>
+        );
     }
 
 -> Props are properties passed to components written like attributes inside component calls 
 -> Props can only be passed from parent to child components and is read only
+
+Prop destructuring and Default Props-
+
+    function Button({ text = "Click Me!", color = "blue", fontSize = 12 }) {
+    const buttonStyle = {
+        color: color,
+        fontSize: fontSize + "px"
+    };
+
+    return <button style={buttonStyle}>{text}</button>;
+    }
+
+    export default function App() {
+    return (
+        <div>
+            <Button />
+            <Button text="Don't Click Me!" color="red" />
+            <Button fontSize={20} />
+        </div>
+        );
+    }
+
+-> Unpacking your props in the component arguments allows for more concise and readable code
+-> Default props helps in only sending required props to child components 
 
 Callback props-
 
@@ -70,4 +104,6 @@ Callback props-
 
 React hooks-
 
--> Hooks are special react functions for managing component state and other properties 
+-> Hooks are special react functions for managing components (for eg: useState)
+-> Hooks can only be called from the top level of a functional component
+-> Hooks can’t be called from inside loops or conditions

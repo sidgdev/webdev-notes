@@ -1,0 +1,16 @@
+State - "Data which controls how program is behaving" or "Data which has an effect on the result and output of program"
+
+useState hook-
+
+-> useState hook is built-in hook that allows you to define state in a functional component 
+-> It takes initial value as a parameter and returns an array with two elements that we can destructure to get-
+    1) current state value
+    2) function to update the state value
+
+    const [stateValue, setStateValue] = useState(initialValue);
+
+React Rerendering-
+
+-> when a component's state or props change, React updates virtual DOM and reconcile changes with the actual DOM
+-> Rerendering is done with minimal set of changes needed to update actual DOM through reconciliation algorithm
+
