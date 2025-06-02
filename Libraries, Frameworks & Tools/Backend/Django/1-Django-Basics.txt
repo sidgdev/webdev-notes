@@ -1,0 +1,171 @@
+-> Django is component-based "shared-nothing" architecture web framework which is somewhat opinionated
+
+Django project structure-
+
+URLs - URL mapper to redirect HTTP requests to the appropriate view based on the request URL
+View - Request handler function, which receives HTTP requests and returns HTTP responses
+Models - Python objects that define the structure of app's data and provide mechanisms to run queries in database
+Templates - Text file defining structure file (HTML/XML etc) with placeholders used to represent actual content
+
+URL mapper functions-
+
+    path ('route', view)
+    re_path ('reg_exp_route', view)
+
+Querying data-
+
+    Model_class.objects.filter()
+
+Django Features-
+
+Forms - HTML to collect user data for processing on server
+User authentication and permissions - Robust user authentication and permission system that has been built with security in mind
+Caching - Flexible caching to save on re-rendering
+Administration site - admin page to create, edit, and view any data models
+Serializing data - Serialize and serve your data as XML or JSON
+
+Django skeleton site command-
+
+    django-admin startproject examplesite
+
+Above command creates a folder/file structure as follows-
+
+examplesite/
+    manage.py
+    examplesite/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+        asgi.py
+
+-> __init__.py is empty file that instructs Python to treat this directory as a Python package
+-> settings.py contains all the website settings, including registering any applications, path of static files, database configuration etc
+-> urls.py defines the site URL-to-view mappings
+-> wsgi.py is used to help your Django application communicate with the web server (boilerplate)
+-> asgi.py is a standard for Python asynchronous web apps and servers to communicate with each other
+
+Djanog site app command-
+
+    python manage.py startapp exampleapp
+
+examplesite/
+    manage.py
+    examplesite/
+    exampleapp/
+        admin.py
+        apps.py
+        models.py
+        tests.py
+        views.py
+        __init__.py
+        migrations/
+
+-> Files are named after their purpose (views in views.py, models in models.py, tests in tests.py, administration site configuration in admin.py, application registration in apps.py)
+-> migrations folder to store "migrations" - files that allow automatically to update database as models are modified 
+
+Registering app in settings.py-
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        ...
+        # Add our new application
+        'exampleapp.apps.ExampleappConfig', # This object was created for us in /exampleapp/apps.py
+    ]
+
+Other relevant configuration in settings.py-
+
+DATABASES - for configuring DB
+SECRET_KEY - need for Django security, to be protected in Production, ingest through .env file
+DEBUG - gives extensive logging on error, should be set FALSE in Production
+
+Default site urls.py cofiguration-
+
+    from django.contrib import admin
+    from django.urls import path
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+    ]
+
+Additional site urls.py config to add app urls and redirection-
+
+    from django.urls import include
+    from django.views.generic import RedirectView
+
+    urlpatterns += [
+        path('app/', include('exampleapp.urls')),
+        path('', RedirectView.as_view(url='app/', permanent=True)),  # '' refers to base url, using '/' will cause error
+    ]
+
+Site urls.py config to server static content-
+
+    # Use static() to add URL mapping to serve static files during development (only)
+    from django.conf import settings
+    from django.conf.urls.static import static
+
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+Command to run database migrations-
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+Running Django server-
+
+    python manage.py runserver
+
+Model object definintion-
+
+    from django.db import models
+    from django.urls import reverse
+
+    class ModelName (models.Model):
+        """A typical class defining a model, derived from the Model class."""
+
+        # Fields
+        my_field_name = models.CharField(max_length=20, help_text='Enter field documentation')
+        # …
+
+        # Metadata
+        class Meta:
+            ordering = ['-my_field_name']
+
+        # Methods
+        def get_absolute_url(self):
+            """Returns the URL to access a particular instance of ModelName."""
+            return reverse('model-detail-view', args=[str(self.id)])
+
+        def __str__(self):
+            """String for representing the ModelName object (in Admin site etc.)."""
+            return self.my_field_name
+
+Creating and modifying records-
+
+    save()
+
+Searching records-
+
+    ModelName.objects.all ()
+    ModelName.objects.filter (field_name__match_type = 'value')
+
+Registering models in admins.py-
+
+    from .models import ModelName
+    admin.site.register(ModelName)
+
+Creating superuser command-
+
+    python manage.py createsuperuser
+
+Register ModelAdmin class-
+
+    # Define the admin class
+    class AuthorAdmin(admin.ModelAdmin):
+        pass
+
+    # Register the admin class with the associated model
+    admin.site.register(Author, AuthorAdmin)
+
+-> ModelAdmin can be used to configure admin view layout
