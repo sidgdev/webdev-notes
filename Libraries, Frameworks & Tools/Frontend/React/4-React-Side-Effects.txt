@@ -1,0 +1,37 @@
+React Side Effect-
+
+-> side effect is any operation that affects something outside the component, like data fetching, subscriptions, or manually changing the DOM
+
+useEffect hook-
+
+-> useEffect hook performs side effects in components, such as data fetching, subscriptions, or manually changing the DOM after render
+
+    useEffect(
+    () => {
+        // execute side effect
+        return () => {
+        // cleanup function on unmounting or re-running effect
+        }
+    },
+    // optional dependency array
+    [/* 0 or more entries */]
+    )
+
+    useEffect(() => {
+        // This runs after every render
+    });
+
+    useEffect(() => {
+        // This runs only on mount (when the component appears)
+    }, []);
+
+    useEffect(() => {
+        // This runs on mount *and also* if either a or b have changed since the last render
+    }, [a, b]);
+
+Scenarios to avoid using useEffect hook-
+
+1 - calculating something based on the state during rendering
+2 - for events
+3 - to reset state based on a condition
+4 - managing state (consider lifting state)

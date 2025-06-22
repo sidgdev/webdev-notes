@@ -13,4 +13,35 @@ React Rerendering-
 
 -> when a component's state or props change, React updates virtual DOM and reconcile changes with the actual DOM
 -> Rerendering is done with minimal set of changes needed to update actual DOM through reconciliation algorithm
+-> State data should not be mutated directlty, use setState function with updated state object
+-> State updates are asynchronous, whenever you call the setState function, React will apply the update in the next component render
 
+State updater function-
+
+    const handleIncreaseAge = () => {
+    setPerson({ ...person, age: person.age + 1 });
+    setPerson({ ...person, age: person.age + 1 });  // Age is only increased by 1
+    };
+
+-> Using a callback function passed to the setState function, it ensures that the latest state is passed in as an argument to the callback
+
+    const handleIncreaseAge = () => {
+    setPerson((prevPerson) => ({ ...prevPerson, age: prevPerson.age + 1 }));
+    setPerson((prevPerson) => ({ ...prevPerson, age: prevPerson.age + 1 }));  // Age increased by 2
+    };
+
+Controlled components-
+
+Native HTML components where we maintain explicit state control over components 
+
+    function CustomInput() {
+    const [value, setValue] = useState("");
+
+    return (
+        <input
+            type="text"
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+        />
+        );
+    }
